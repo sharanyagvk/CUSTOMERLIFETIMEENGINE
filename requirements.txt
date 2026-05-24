@@ -1,8 +1,7 @@
-Python 
-Pandas
-NumPy
-Matplotlib
-Seaborn
-Scikit-learn
-Streamlit
-Plotly
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+streamlit
+plotly
