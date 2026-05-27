@@ -5,45 +5,45 @@ import seaborn as sns
 import streamlit as st
 import os
 
-# ---------------- PAGE SETTINGS ----------------
+#  PAGE SETTINGS 
 st.set_page_config(page_title="Customer Lifetime Value Engine", layout="wide")
 
 st.title("📊 Customer Lifetime Value Engine")
 
-# ---------------- SHOW FILES ----------------
+#  SHOW FILES 
 st.subheader("📁 Files Available in Current Folder")
 st.write(os.listdir())
 
-# ---------------- LOAD DATA ----------------
+#  LOAD DATA-
 try:
     df = pd.read_csv("train_BRCpofr.csv")
 
     st.success("✅ Dataset Loaded Successfully")
 
-    # ---------------- PREVIEW ----------------
+    #  PREVIEW 
     st.subheader("📌 Dataset Preview")
     st.dataframe(df.head())
 
-    # ---------------- SHAPE ----------------
+    #  SHAPE 
     st.subheader("📌 Dataset Shape")
     st.write("Rows:", df.shape[0])
     st.write("Columns:", df.shape[1])
 
-    # ---------------- COLUMNS ----------------
+    #  COLUMNS
     st.subheader("📌 Columns")
     st.write(df.columns)
 
-    # ---------------- MISSING VALUES ----------------
+    #  MISSING VALUES 
     st.subheader("📌 Missing Values")
     st.write(df.isnull().sum())
 
-    # ---------------- NUMERIC COLUMNS ----------------
+    #  NUMERIC COLUMNS 
     numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
 
     st.subheader("📌 Numeric Columns")
     st.write(numeric_cols)
 
-    # ---------------- HISTOGRAM ----------------
+    #  HISTOGRAM 
     if len(numeric_cols) > 0:
 
         selected_col = st.selectbox(
@@ -58,7 +58,7 @@ try:
 
         st.pyplot(fig1)
 
-    # ---------------- CORRELATION HEATMAP ----------------
+    #  CORRELATION HEATMAP
     if len(numeric_cols) > 1:
 
         st.subheader("📈 Correlation Heatmap")
@@ -74,7 +74,7 @@ try:
 
         st.pyplot(fig2)
 
-    # ---------------- COUNT PLOT ----------------
+    #  COUNT PLOT 
     categorical_cols = df.select_dtypes(include=['object']).columns
 
     if len(categorical_cols) > 0:
